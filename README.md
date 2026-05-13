@@ -4,35 +4,10 @@
 
 ---
 
-## 项目声明
-
-**作者团队**
-
-| 作者 | 单位 |
-|---|---|
-| 李志颖 | 暨南大学 网络空间安全学院 |
-| 刘 智 | 暨南大学 网络空间安全学院 |
-| 耿光刚 | 暨南大学 网络空间安全学院 |
-| 靳小波 | 西交利物浦大学 |
-
-**版权与使用许可**
-
-本项目代码仅用于 **学术研究与教学**，旨在揭示物体检测模型在后门 / 对抗场景下的安全脆弱性，从而推动相应防御方法的研究。使用者在使用本仓库代码时，须遵循下列约定：
-
-1. **仅限合法、合规的学术研究用途**，严禁将本项目用于任何针对真实业务系统的攻击、恶意干扰或其他违反法律法规与学术伦理的行为；
-2. 引用、转发或基于本项目进行二次开发时，请显式标注原作者及本仓库链接；
-3. 因不当使用本项目而产生的任何后果，由使用者本人承担，作者团队及所在单位不承担任何责任。
-
-如需在论文、报告或其他公开材料中引用本项目，请按 [引用 / 致谢](#引用--致谢) 章节给出的方式标注。
-
----
-
 ## 目录
 
-- [项目声明](#项目声明)
 - [研究背景](#研究背景)
 - [方法总览](#方法总览)
-- [损失函数](#损失函数)
 - [项目结构](#项目结构)
 - [环境依赖](#环境依赖)
 - [数据与权重准备](#数据与权重准备)
@@ -41,6 +16,7 @@
 - [关键超参](#关键超参)
 - [注意事项](#注意事项)
 - [引用 / 致谢](#引用--致谢)
+- [项目声明](#项目声明)
 
 ---
 
@@ -92,38 +68,6 @@
 - **Shapley 值（`compute_shapley.py`）**：在 DCT patch 上做 mask 抽样，依据 `resolve_yolov5_output` 给出的"检测显著度"评估每个 patch 的边际贡献；可用于解释触发器、做 Shapley-aware 损失（`ShapleyLoss`）；
 - **频率检测器（`frequency_detector.py`）**：AlexNet + Sigmoid，对 DCT 后的图像做"是否被污染"的二分类，作为 GAN 的另一对手；
 - **干净 / 中毒 YOLOv5**：`clean_yolov5.pt` 与 `infected_yolov5.pt` 分别为参照与攻击目标，二者输出差异通过 `PoisonLoss` 拉开。
-
----
-
-## 损失函数
-
-参考 `loss.md` 与 `loss.py`，最终训练目标由若干项组合：
-
-$$
-\text{Decision\_loss}(x) = \frac{1}{mn}\sum_{i=1}^{n}\sum_{j=1}^{m} e^{H_{i,j}\cdot W_{i,j}\cdot c_{i,j}} - 1
-$$
-
-$$
-\text{Frequency\_loss}(x) = \frac{1}{n}\sum_{i=1}^{n} -\log\bigl(1 - \mathcal{D}(x_i)\bigr)
-$$
-
-$$
-\text{Poison\_loss}(x) = \exp\bigl(10\,(\text{Decision}_\text{infected}(x) - \text{Decision}_\text{clean}(x))\bigr)
-$$
-
-$$
-\text{Visibility\_loss}(x_\text{adv}, x) = \mathrm{MSE}\bigl(\mathrm{MSE}(x_\text{adv}, x),\; b\bigr)
-$$
-
-$$
-\text{Gather\_loss}(\delta) = e^{H(\delta)} - 1,\quad H(\delta)=\text{灰度直方图熵}
-$$
-
-$$
-\mathcal{L}_G = \lambda_\text{adv}\,\text{Decision} + \lambda_\text{det}\,\text{Frequency} + \lambda_\text{vis}\,\text{Visibility} + \lambda_\text{poison}\,\text{Poison} + \lambda_\text{gather}\,\text{Gather}
-$$
-
-其中 $H_{i,j},\,W_{i,j},\,c_{i,j}$ 为第 $i$ 张图第 $j$ 个预测框的宽、高与置信度，$\mathcal{T}(\cdot)$ 为 YOLOv5，$\mathcal{D}(\cdot)$ 为频域检测器。Shapley loss 在当前主分支中默认 0，可在 `loss.py` 中开启 `compute_multiple_shapley` 走完整版本。
 
 ---
 
@@ -321,3 +265,26 @@ PYTHONUNBUFFERED=1 python -u poison_test.py
 - 主维护人：[@Zhiying-Li-dot](https://github.com/Zhiying-Li-dot)（暨南大学 网络空间安全学院）
 
 如有问题，欢迎提 issue 或邮件交流。
+
+---
+
+## 项目声明
+
+**作者团队**
+
+| 作者 | 单位 |
+|---|---|
+| 李志颖 | 暨南大学 网络空间安全学院 |
+| 刘 智 | 暨南大学 网络空间安全学院 |
+| 耿光刚 | 暨南大学 网络空间安全学院 |
+| 靳小波 | 西交利物浦大学 |
+
+**版权与使用许可**
+
+本项目代码仅用于 **学术研究与教学**，旨在揭示物体检测模型在后门 / 对抗场景下的安全脆弱性，从而推动相应防御方法的研究。使用者在使用本仓库代码时，须遵循下列约定：
+
+1. **仅限合法、合规的学术研究用途**，严禁将本项目用于任何针对真实业务系统的攻击、恶意干扰或其他违反法律法规与学术伦理的行为；
+2. 引用、转发或基于本项目进行二次开发时，请显式标注原作者及本仓库链接；
+3. 因不当使用本项目而产生的任何后果，由使用者本人承担，作者团队及所在单位不承担任何责任。
+
+如需在论文、报告或其他公开材料中引用本项目，请按 [引用 / 致谢](#引用--致谢) 章节给出的方式标注。
