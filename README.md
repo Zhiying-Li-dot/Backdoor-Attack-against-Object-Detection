@@ -304,11 +304,13 @@ PYTHONUNBUFFERED=1 python -u poison_test.py
 如本项目对你的研究有帮助，欢迎以 GitHub 链接的形式引用：
 
 ```bibtex
-@misc{li2025backdoorobjdet,
-  author = {Zhiying Li and Zhi Liu and Guanggang Geng and Xiaobo Jin},
-  title  = {Backdoor Attack against Object Detection},
-  year   = {2025},
-  howpublished = {\url{https://github.com/Zhiying-Li-dot/Backdoor-Attack-against-Object-Detection}}
+@article{li2025twin,
+  title={Twin trigger generative networks for backdoor attacks against real-time object detection},
+  author={Li, Zhiying and Liu, Zhi and Geng, Guanggang and Gowda, Shreyank N and Lin, Shuyuan and Weng, Jian and Jin, Xiao-Bo},
+  journal={Applied Soft Computing},
+  pages={114200},
+  year={2025},
+  publisher={Elsevier}
 }
 ```
 
