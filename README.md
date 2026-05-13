@@ -4,8 +4,32 @@
 
 ---
 
+## 项目声明
+
+**作者团队**
+
+| 作者 | 单位 |
+|---|---|
+| 李志颖 | 暨南大学 网络空间安全学院 |
+| 刘 智 | 暨南大学 网络空间安全学院 |
+| 耿光刚 | 暨南大学 网络空间安全学院 |
+| 靳小波 | 西交利物浦大学 |
+
+**版权与使用许可**
+
+本项目代码仅用于 **学术研究与教学**，旨在揭示物体检测模型在后门 / 对抗场景下的安全脆弱性，从而推动相应防御方法的研究。使用者在使用本仓库代码时，须遵循下列约定：
+
+1. **仅限合法、合规的学术研究用途**，严禁将本项目用于任何针对真实业务系统的攻击、恶意干扰或其他违反法律法规与学术伦理的行为；
+2. 引用、转发或基于本项目进行二次开发时，请显式标注原作者及本仓库链接；
+3. 因不当使用本项目而产生的任何后果，由使用者本人承担，作者团队及所在单位不承担任何责任。
+
+如需在论文、报告或其他公开材料中引用本项目，请按 [引用 / 致谢](#引用--致谢) 章节给出的方式标注。
+
+---
+
 ## 目录
 
+- [项目声明](#项目声明)
 - [研究背景](#研究背景)
 - [方法总览](#方法总览)
 - [损失函数](#损失函数)
@@ -281,7 +305,7 @@ PYTHONUNBUFFERED=1 python -u poison_test.py
 
 ```bibtex
 @misc{li2025backdoorobjdet,
-  author = {Zhiying Li},
+  author = {Zhiying Li and Zhi Liu and Guanggang Geng and Xiaobo Jin},
   title  = {Backdoor Attack against Object Detection},
   year   = {2025},
   howpublished = {\url{https://github.com/Zhiying-Li-dot/Backdoor-Attack-against-Object-Detection}}
@@ -292,6 +316,6 @@ PYTHONUNBUFFERED=1 python -u poison_test.py
 
 ## 维护者
 
-- [@Zhiying-Li-dot](https://github.com/Zhiying-Li-dot)
+- 主维护人：[@Zhiying-Li-dot](https://github.com/Zhiying-Li-dot)（暨南大学 网络空间安全学院）
 
 如有问题，欢迎提 issue 或邮件交流。
