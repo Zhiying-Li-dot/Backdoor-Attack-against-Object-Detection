@@ -1,0 +1,50 @@
+# ===== 数据与样本 =====
+origin/
+invisible/
+poisoned_image/
+annotations/
+data/
+datasets/
+
+# ===== 训练产物 =====
+models/
+log/
+logs/
+wandb/
+remake/
+runs/
+checkpoints/
+
+# ===== 模型权重（体积过大，单独发布）=====
+*.pt
+*.pth
+*.pth.tar
+*.ckpt
+*.bin
+*.onnx
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ===== 编辑器 / 系统 =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ===== 临时文件 =====
+tmp.*
+*.tmp
+*.log
+
+# ===== 其它 =====
+*.pyc
